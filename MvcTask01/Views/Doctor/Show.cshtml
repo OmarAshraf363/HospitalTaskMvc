@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FormToAppointment</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="mb-3">
+            <h2>Appointment to : @Model.Name</h2>
+        </div>
+    </div>
+    <div class="container d-flex align-items-start">
+        <form id="appointmentForm" action="/Doctor/Add" method="post" style="width:70%;">
+            <div class="mb-3">
+                <input class="form-control" type="text" name="PatientName" placeholder="Patient Name" required />
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="text" name="PatientPhone" placeholder="Patient Phone" required />
+            </div>
+            <label class="col-form-label">Time</label>
+            <div class="mb-3">
+                <input class="form-control" type="time" name="Time" placeholder="Time" required />
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="date" name="Date" placeholder="Date" required />
+            </div>
+            <input type="hidden" name="DoctorId" value="@Model.Id" />
+
+            <div class="mb-3">
+                <button type="button" class="btn btn-outline-primary ps-4 pe-4" onclick="showAlert()">Complete Appointment</button>
+            </div>
+        </form>
+        <div class="card ms-3 me-3" style="width:30%;">
+            <a href="">
+                <img class="card-img-top" src="~/Images/@Model.Img" style="height:15rem;" />
+            </a>
+            <div class="card-body">
+                <h4 class="card-title">@Model.Name</h4>
+                <h5 class="card-title">Specialization: @Model.Specialization</h5>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showAlert() {
+            var form = document.getElementById('appointmentForm');
+            if (form.checkValidity()) {
+                Swal.fire({
+                    title: 'Confirm Appointment',
+                    text: "Are you sure you want to complete this appointment?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, confirm it!',
+                    cancelButtonText: 'No, cancel it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            } else {
+                form.reportValidity();
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* @model Doctor
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FormToAppointment</title>
+</head>
+<body>
+    <div class="container">
+        <div class="mb-3">
+            <h2>Appointment to : @Model.Name</h2>
+        </div>
+    </div>
+    <div class="container d-flex align-items-start">
+        <form id="appointmentForm" action="/Doctor/Add" method="post" style="width:70%;">
+            <div class="mb-3">
+                <input class="form-control" type="text" name="PatientName" value="" placeholder="Patient Name" />
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="text" name="PatientPhone" value="" placeholder="Patient Phone" />
+            </div>
+            <label class="col-form-label">Time</label>
+            <div class="mb-3">
+                <input class="form-control" type="time" name="Time" value="" placeholder="Time" />
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="date" name="Date" value="" placeholder="Date" />
+            </div>
+            <input type="hidden" name="DoctorId" value="@Model.Id" />
+            <div class="mb-3">
+                <button type="button"  class="btn btn-outline-primary ps-4 pe-4" onclick="showAlert()">Complete Appointment</button>
+            </div>
+        </form>
+        <div class="card ms-3 me-3" style="width:30%;">
+            <a href="">
+                <img class="card-img-top" src="~/Images/@Model.Img" style="height:15rem;" />
+            </a>
+            <div class="card-body">
+                <h4 class="card-title">@Model.Name</h4>
+                <h5 class="card-title">Specialization: @Model.Specialization</h5>
+            </div>
+        </div>
+      
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function showAlert() {
+            Swal.fire({
+                title: "Good job!",
+                text: "You Have Been Success Compelete ",
+                icon: "success"
+            }).then((result) => {
+                
+                    document.getElementById('appointmentForm').submit();
+                }
+            );
+        }
+    </script>
+</body>
+</html>
+ *@

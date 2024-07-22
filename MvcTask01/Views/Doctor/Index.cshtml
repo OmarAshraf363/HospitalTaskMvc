@@ -1,0 +1,23 @@
+﻿<div class="container d-flex flex-wrap">
+    <div class="d-flex flex-wrap">
+        @foreach(Doctor item in Model)
+        {
+            <div class="card m-3 " style="width: 17rem;">
+                <a href="/Doctor/Show/@item.Id"> <img class="card-img-top" src="~/Images/@item.Img" style="height:15rem;" /></a>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <h4 class="card-title">@item.Specialization</h4>
+                    <a href="/Doctor/Show/@item.Id" class="btn btn-primary">Appointment</a>
+                </div>
+                
+
+
+            </div>
+        }
+    </div>
+
+    
+
+
+
+</div>

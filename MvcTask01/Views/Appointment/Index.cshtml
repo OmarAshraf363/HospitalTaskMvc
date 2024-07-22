@@ -1,0 +1,93 @@
+﻿@{
+    int i = 0;
+}
+
+<div class="mb-3 ms-auto me-auto" style="width:50%;">
+    <div class="btn-group">
+        <a href="/Appointment/" class="btn btn-outline-success">All</a>
+        <a href="/Appointment/Get/@DateTime.Today.ToString("yyyy-MM-dd")" class="btn btn-outline-success">Today</a>
+        <a href="/Appointment/Get/@DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")" class="btn btn-outline-success">Tomorrow</a>
+     
+    </div>
+</div>
+
+<table class="table table-hover table-info">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Patient Phone</th>
+            <th scope="col">Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@(i += 1)</th>
+                <td>@item.Doctor.Name</td>
+                <td>@item.PatientName</td>
+                <td>@item.PatientPhone</td>
+                <td>@item.Date.ToShortDateString() @item.Time.ToString(@"hh\:mm")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* @{
+    int i = 0;
+}
+<div class="mb-3 ms-auto me-auto" style="width:50%;">
+    <div class="btn-group" >
+        <a href="/Appointment/Get/@DateTime.Today" class="btn btn-group btn-outline-success "> Today </a>
+        <a href="" class="btn btn-group btn-outline-success "> ToMoworow </a>
+        <a href="" class="btn btn-group btn-outline-success "> ThisWeek </a>
+    </div>
+</div>
+<table class="table table-hover table-info">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Patient Phone</th>
+            <th scope="col"> Time</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+
+            <tr>
+                <th scope="row">@(i += 1)</th>
+                <td>@item.Doctor.Name</td>
+                <td>@item.PatientName</td>
+                <td>@item.PatientPhone</td>
+                <td>@item.Date || @item.Time </td>
+            </tr>
+    }
+
+    </tbody>
+</table>
+ *@
